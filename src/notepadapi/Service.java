@@ -1,14 +1,16 @@
 package notepadapi;
 
-import presenter.dto.NoteDto;
-
 import java.util.List;
+
 public interface Service {
+    List<Note> getRepo();
+    void createNote(String note);
 
-
-    NoteDto createNote(String note);
-
-    List<NoteDto> getAllNotes();
+    void showAllNotes();
 
     void deleteNoteByNumber(int index);
+
+    void changeNoteByNumber(int index);
+
+     int getSize();
 }

@@ -1,15 +1,39 @@
 package presenter;
 
-import notepadapi.Note;
-import presenter.dto.NoteDto;
-import ui.View;
+import notepadapi.Service;
+import notepadapi.ServiceImpl;
 
-import java.util.List;
+public class Presenter {
 
-public interface Presenter {
-    NoteDto createNewNote(String note);
+    private final Service service = new ServiceImpl();
 
-    List<NoteDto> getAllNotes();
+    public Presenter() {
+    }
 
-    void deleteNoteByNumber(int index);
+    public int getNotepadSize(){
+        return service.getSize();
+    }
+    public void createNewNote(String note) {
+        service.createNote(note);
+    }
+
+    public void showAllNotes() {
+        service.showAllNotes();
+    }
+
+    public void deleteNoteByNumber(int number) {
+        service.deleteNoteByNumber(number);
+    }
+
+
+    public void changeNoteByNumber(int index)  {
+        service.changeNoteByNumber(index);
+    }
+
+    public boolean isEmpty(){
+        if (!service.getRepo().isEmpty()) {
+            return false;
+        }
+        return service.getRepo().isEmpty();
+    }
 }
